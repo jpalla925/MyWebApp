@@ -1,0 +1,28 @@
+@model IEnumerable<MyWebApp.Models.Expense>
+
+<div class="container">
+    <h1>Expenses</h1>
+    <a class="btn btn-primary mb-3" asp-action="CreateEdit">Add Expense</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Value</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var expense in Model)
+            {
+                <tr>
+                    <td>@expense.Description</td>
+                    <td>@expense.Value</td>
+                    <td>
+                        <a asp-action="CreateEdit" asp-route-id="@expense.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@expense.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
